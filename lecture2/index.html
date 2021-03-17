@@ -1,0 +1,162 @@
+<html>
+
+<head>
+    <title>Title of your page</title>
+    <script>
+        /* 
+                                                                                                                                                                                                                                                                                                                                                                                                       ===================================
+                                                                                                                                                                                                                                                                                                                                                                                                       || Basic variables in Javascript ||
+                                                                                                                                                                                                                                                                                                                                                                                                       ===================================
+                                                                                                                                                                                                                                                                                                                                                                                                    */
+
+        let x = 5; // Declaring a variable which can take different values 
+        const y = 10; // Declaring a constant
+        var z = 7; // Old way of declaring variables
+
+        console.log(x); // Will show 5
+        x = y + z;
+        console.log(x); // Will show 17
+        x = x + 5;
+        console.log(x); // Will show 22
+
+        // Data types
+
+        let n = 'Some piece of text'; // String
+        let m = 921354213; // Number integer
+        let f = 12134.11; // Number float
+        let b = true // boolean, true/false
+        let u = [5, 6, 3, 5]; // Array of numbers
+        let s = ["this", "is", "a", "Text", "array"] // Array of Strings
+        let k = [5, "ok", 89, 23, "text"] // mixed Array
+        let o = {
+                name: "Ion",
+                age: 15,
+                hobbies: ["games", "guitar"]
+            } // Object
+
+        console.log(typeof(m)); // Use this to check the type of a variable
+
+        /* 
+           ====================================
+           || Basic math and text operations ||
+           ====================================
+        */
+
+        let c1 = 13;
+        let c2 = 4;
+
+        // Mathematical operations with numbers
+        let res = c1 + c2; // 17
+        res = c1 * c2; // 52
+        res = c1 / c2; // 3.25
+        res = c1 % c2; // 1 
+        res = Math.pow(c1, c2); // 28561
+        res = Math.sqrt(c2); // 2
+        // Check the Math library at https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
+
+        // Operations with strings
+
+        let s1 = "This is a ";
+        let s2 = "Banana";
+
+        let result = s1 + s2; // "This is a Banana"
+        result = "Is " + s1 + s2; // "Is This a Banana"
+        result = `Is ${s1} yellow ${s2} ?` // "Is This a yellow Banana ?"
+
+        let someNumber = 10;
+        let someString = "Wow, I got a ";
+
+        // Adding a string to a "+" operation will make everything a string
+        let output = someString + someNumber; // Wow, I got a 10
+        output = `${someString} ${someNumber}`; // Better
+        console.log(output);
+
+        // String library operators
+        let text = 'elitech'
+        console.log(text.charAt(2)); // i
+        console.log(text.replace('e', 'a')) // alitach
+        console.log(text.slice(2, 6)) // tech
+        console.log(text.includes('elite')) // true
+
+        /* 
+           ====================================
+           ||        Logical operators       ||
+           ====================================
+        */
+
+        let age = 23;
+        if (age > 18) {
+            console.log("You are allowed to have a drink");
+        } else if (age === 18) {
+            console.log("You are just old enough");
+        } else {
+            console.log("You are not allowed to drink")
+        }
+
+        let boolean1 = true;
+        let boolean2 = false;
+        let logicalOutput = boolean1 || boolean2; // OR
+        logicalOutput = boolean1 && boolean2; // AND
+        logicalOutput = !boolean1 // NOT
+        boolean1 === boolean2; // Is equal
+        boolean1 !== boolean2; // Is not equal
+
+        /* 
+           ====================================
+           ||        Functions               ||
+           ====================================
+        */
+
+
+        function sayHello(name) {
+            console.log(`Hello ${name} !`);
+        }
+
+        sayHello('Ion'); // Hello Ion !
+        sayHello('Peter'); // Hello Peter !
+
+
+        function getBiggestNumber(x, y) {
+            if (x > y) {
+                return x
+            } else {
+                return y
+            }
+        }
+
+        console.log(getBiggestNumber(7, 12));
+
+        function someFunc(in1, in2) {
+            let someLocalVariable = 10;
+            console.log(someLocalVariable); // Will print 10
+        }
+        someFunc();
+        //        console.log(someLocalVariable) // Will throw an error
+
+        const t = true
+        if (t) {
+            let r = 'someValue';
+            console.log(r); // Will print 'someValue'
+        }
+        //      console.log(r) // Will throw an error
+    </script>
+
+</head>
+
+<body>
+    <h1>Big text here</h1>
+    <button id="myButton">Click me</button>
+    <p>You have clicked the button : </p>
+    <p id="counterText"></p>
+    <script>
+        let clickCount = 0;
+
+        function myFunction() {
+            clickCount = clickCount + 1;
+            document.getElementById("counterText").innerHTML = `${clickCount} times`;
+        }
+        document.getElementById("myButton").addEventListener("click", myFunction);
+    </script>
+</body>
+
+</html>
