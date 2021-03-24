@@ -1,0 +1,103 @@
+<html>
+
+<body>
+  <h1>Lecture 3 code</h1>
+  <h3> Fruits : </h3>
+  <ul id="fruitList"></ul>
+  <script>
+    /* 
+       ====================================
+       || Basic arrays                   ||
+       ====================================
+    */
+    const myList = [4, 20, 4, 1, 69, 3, 45];
+    console.log(myList); // Prints the full array
+    console.log(myList[3]); // 1
+    console.log(myList[2] + myList[4]); //73
+    console.log(myList[11]); // undefined
+    console.log(myList.length); // 7
+
+    myList[5] = 111;
+    console.log(myList[5]); // 111
+
+    /* 
+       ====================================
+       || Typical array operations       ||
+       ====================================
+    */
+    const transport = ['car', 'truck', 'bus', 'bike', 'train'];
+    console.log(transport);
+    transport.pop(); //["car", "truck", "bus", "bike", "train"]
+    console.log(transport);
+    transport.push('taxi'); //["car", "truck", "bus", "bike"]
+    console.log(transport);
+    transport.shift(); // ["car", "truck", "bus", "bike", "taxi"]
+    console.log(transport);
+    transport.unshift('microbus') // ["truck", "bus", "bike", "taxi"]
+    console.log(transport);
+
+
+    /* 
+       ====================================
+       ||every and some array functions  ||
+       ====================================
+    */
+
+    const numbers = [1431, 23, 4, 1, 589, 23];
+
+    function isBiggerThan100(n) {
+      if (n > 100) {
+        return true
+      } else {
+        return false
+      }
+    }
+
+    const allBigNumber = numbers.every(isBiggerThan100);
+    console.log(allBigNumber);
+    const anyBigNumber = numbers.some(isBiggerThan100);
+    console.log(anyBigNumber);
+    const onlyBigNumbers = numbers.filter(isBiggerThan100);
+    console.log(onlyBigNumbers);
+
+
+    /* 
+       ====================================
+       || Array iterration               ||
+       ====================================
+    */
+
+    const fruits = ['banana', 'mango', 'pineapple', 'avocado'];
+
+    // Classical way of iterating through arrays
+    for (let i = 0; i < fruits.length; i++) {
+      console.log(`I like ${fruits[i]}`)
+    }
+    console.log("- - ");
+
+    // A more modern way of iterating through arrays
+    fruits.forEach((f) => {
+      console.log(`I love ${f}`);
+    });
+
+    // Modifying the array elements
+    fruits.forEach((f, i) => {
+      fruits[i] = f + 's';
+    });
+
+    console.log(fruits);
+    /* 
+       ====================================
+       || Arrays and HTML lists          ||
+       ====================================
+    */
+    const fruitList = document.getElementById("fruitList");
+    fruits.forEach((f) => {
+      let listElement = document.createElement('li') // creates an empty <li></li>
+      fruitList.appendChild(listElement);
+      listElement.innerHTML = f;
+    });
+  </script>
+</body>
+
+</html>

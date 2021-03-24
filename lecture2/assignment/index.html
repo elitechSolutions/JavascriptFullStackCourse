@@ -1,0 +1,36 @@
+<html>
+
+<body>
+  <input type="number" id="num" />
+  <button id="actionButton">Calculate</button>
+  <p id="outputText"></p>
+  <script>
+    // Attach the function to run on click event of the button
+    document.getElementById("actionButton").addEventListener("click", getBills);
+
+    function getBills(event) {
+      // Get the number from the text input
+      let totalSum = Number(document.getElementById("num").value);
+
+      // For each type of bills, divide it by its value; extract the full part and then substract it from the total sum 
+      let bills_100 = Math.floor(totalSum / 100);
+      totalSum = totalSum % 100;
+      let bills_50 = Math.floor(totalSum / 50);
+      totalSum = totalSum % 50;
+      let bills_20 = Math.floor(totalSum / 20);
+      totalSum = totalSum % 20;
+      let bills_10 = Math.floor(totalSum / 10);
+      totalSum = totalSum % 10;
+      let bills_5 = Math.floor(totalSum / 5);
+      totalSum = totalSum % 5;
+      let bills_1 = totalSum;
+
+      // Print out the result in the paragraph with id "output Text"
+      document.getElementById("outputText").innerHTML =
+        ` 100 bills : ${bills_100} | 50 bills : ${bills_50}  | 20 bills : ${bills_20} | 10 bills : ${bills_10} | 5 bills : ${bills_5} | 1 bills : ${bills_1}`;
+      return result;
+    }
+  </script>
+</body>
+
+</html>
