@@ -1,0 +1,147 @@
+<html>
+
+<body>
+  <h1>Lecture 3 code</h1>
+
+
+
+
+  <script>
+    /* 
+       ====================================
+       || Basic Objects                  ||
+       ====================================
+    */
+
+    const dog = {
+      age: 4,
+      size: 'big',
+      race: 'bulldog',
+      isBig: true,
+      description: ['fluffy', 'chonky', 'bonker']
+    }
+
+    console.log(`dog is very ${dog.size}`);
+    console.log(dog.description[1]);
+    dog.age = 15;
+    console.log(dog.age);
+    console.log(dog['age']);
+    dog.color = 'grey'
+    console.log(`dog's color is ${dog.color}`);
+
+
+
+    /* 
+       ====================================
+       || Typical Object operations      ||
+       ====================================
+    */
+
+    const students = {
+      ion: {
+        name: 'Ion',
+        familyName: 'Iuncu',
+        age: 27
+      },
+      boris: {
+        name: 'Boris',
+        familyName: 'Johnson',
+        age: 27
+      },
+      andrei: {
+        name: 'Andrei',
+        familyName: 'Whatever',
+        age: 27
+      }
+    }
+
+    console.log(Object.keys(students))
+    console.log(Object.keys(students.ion));
+    console.log(Object.values(students));
+    console.log(Object.values(students.boris));
+
+
+    /* 
+       ====================================
+       || Object Iterration              ||
+       ====================================
+    */
+
+    Object.values(students).forEach(s => {
+      console.log(`Student with name ${s.name} ${s.familyName} is ${s.age} years old`)
+    })
+
+    Object.entries(students).forEach(([k, s]) => {
+      console.log(`Extracting info about ${k}`);
+      console.log(`Student with name ${s.name} ${s.familyName} is ${s.age} years old`)
+    })
+
+
+    /* 
+       ====================================
+       || Value vs reference             ||
+       ====================================
+    */
+
+
+    let firstVariable = 10;
+    let secondVariable = firstVariable;
+    firstVariable = firstVariable + 10;
+    console.log(firstVariable); // 20
+    console.log(secondVariable); // 10
+
+
+    let firstArray = [10, 20, 30, 40, 50];
+    let secondArray = firstArray;
+    firstArray[2] = 99;
+    firstArray[3] = 55;
+    console.log(firstArray); // [10, 20, 99, 55, 50]
+    console.log(secondArray); // [10, 20, 99, 55, 50] 
+
+
+    /* 
+       ====================================
+       || Array Spreading             ||
+       ====================================
+    */
+
+    let arrayOne = [10, 20, 30, 40, 50];
+    let arrayTwo = [...arrayOne];
+    arrayOne[2] = 99;
+    arrayOne[3] = 55;
+    console.log(arrayOne); // [10, 20, 99, 55, 50]
+    console.log(arrayTwo); // [10, 20, 30, 40, 50]
+
+
+    let objectOne = {
+      color: 'red',
+      size: 'xl'
+    }
+    let objectTwo = {
+      ...objectOne
+    }
+    objectOne.color = 'green'
+    console.log(objectOne);
+    console.log(objectTwo);
+
+
+    /*    
+       ====================================
+       || Functions within objects       ||
+       ====================================
+    */
+
+    const badass = {
+      name: "Walter",
+      familyName: "White",
+      sayMyName: function () {
+        console.log(`Your name is ${this.name} ${this.familyName}`)
+      }
+    }
+
+    badass.sayMyName();
+    badass['sayMyName'](); // Also works
+  </script>
+</body>
+
+</html>
