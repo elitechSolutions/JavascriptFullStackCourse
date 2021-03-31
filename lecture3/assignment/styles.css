@@ -1,0 +1,11 @@
+ul {
+  list-style-type: none;
+}
+
+li {
+  margin: 10px;
+  background-color: #1a1a47;
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
