@@ -2,24 +2,47 @@
   <div id="list">
 
   </div>
-  <button> + Add fruit</button>
+  <input id='inputName' placeholder="name" />
+  <input id='inputDescription' placeholder="description" />
+  <button id="addFruitButton"> + Add fruit</button>
   <script>
     let myFruits = [];
     const getFruitList = async () => {
       const rawData = await fetch('http://localhost:3000/fruits');
       myFruits = await rawData.json();
+      const myList = document.getElementById('list');
+      myList.innerHTML = '';
+      myFruits.forEach((f, id) => {
+        const fruitObject = document.createElement('div');
+        fruitObject.id = f.name;
+        fruitObject.innerHTML = `<b>${f.name}</b> - ${f.description}`
+        myList.appendChild(fruitObject);
+        const deleteFruitButton = document.createElement('button');
+        deleteFruitButton.innerHTML = 'x'
+        deleteFruitButton.onclick = () => {
+          deleteFruit(id)
+        }
+        fruitObject.appendChild(deleteFruitButton);
+      })
     }
+    const addFruit = async () => {
+      const name = document.getElementById('inputName').value;
+      const description = document.getElementById('inputDescription').value;
 
-    const addFruit = async (name, description) => {
       await fetch(`http://localhost:3000/fruits?name=${name}&description=${description}`, {
         method: 'POST'
       });
+      getFruitList();
     }
 
-    const deleteFruit = async (fruitId) => {
-
+    const deleteFruit = async (name) => {
+      await fetch(`http://localhost:3000/fruits/${name}`, {
+        method: 'DELETE'
+      });
+      getFruitList();
     }
 
     getFruitList();
+    document.getElementById('addFruitButton').onclick = addFruit;
   </script>
 </body>
