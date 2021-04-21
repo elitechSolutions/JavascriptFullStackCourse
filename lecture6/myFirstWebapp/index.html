@@ -1,0 +1,25 @@
+<body>
+  <div id="list">
+
+  </div>
+  <button> + Add fruit</button>
+  <script>
+    let myFruits = [];
+    const getFruitList = async () => {
+      const rawData = await fetch('http://localhost:3000/fruits');
+      myFruits = await rawData.json();
+    }
+
+    const addFruit = async (name, description) => {
+      await fetch(`http://localhost:3000/fruits?name=${name}&description=${description}`, {
+        method: 'POST'
+      });
+    }
+
+    const deleteFruit = async (fruitId) => {
+
+    }
+
+    getFruitList();
+  </script>
+</body>
