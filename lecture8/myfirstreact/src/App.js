@@ -2,19 +2,10 @@ import './App.css';
 import { useEffect, useState } from 'react';
 
 function App() {
-  const [myNumber, setMyNumber] = useState(0);
-
-  useEffect(() => {
-    console.log("This happens once, when the component is mounted");
-    setMyNumber(10);
-  }, [])
-
-  useEffect(() => {
-    console.log("This happens every time 'myNumber' is modified")
-  }, [myNumber])
+  let [myNumber, setMyNumber] = useState(3);
 
   const incrementNumber = () => {
-    setMyNumber(myNumber + 1);
+    myNumber = myNumber + 2
   }
 
   return (
@@ -27,5 +18,7 @@ function App() {
     </div>
   );
 }
-
 export default App;
+
+
+
